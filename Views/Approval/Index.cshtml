@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ContractMonthlyClaimSystemsPrototype.Models.Claim>
+
+@{
+    ViewBag.Title = "Coordinator Approval";
+}
+
+<h2>Coordinator Dashboard</h2>
+<p class="text-muted">Review pending claims. Yellow rows indicate flagged high-value claims.</p>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Lecturer</th>
+            <th>Month</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            // Visual Logic: If status is Flagged, make row yellow (warning)
+            string rowClass = item.Status == "Flagged" ? "table-warning" : "";
+
+            <tr class="@rowClass">
+                <td>@Html.DisplayFor(modelItem => item.LecturerId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Month)</td>
+                <td>@item.HoursWorked</td>
+                <td>R @item.HourlyRate</td>
+                <td>R @item.Amount</td>
+                <td>
+                    @if (item.Status == "Flagged")
+                    {
+                        <span class="badge bg-danger">Flagged: Check Carefully</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-info">Pending</span>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Approve", "Approval", new { id = item.Id }))
+                    {
+                        <button type="submit" class="btn btn-success btn-sm mb-1">Approve</button>
+                    }
+                    @using (Html.BeginForm("Reject", "Approval", new { id = item.Id }))
+                    {
+                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

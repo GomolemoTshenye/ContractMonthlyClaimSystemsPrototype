@@ -1,0 +1,161 @@
+﻿/* =========================================
+   1. GLOBAL STYLES & TYPOGRAPHY
+   ========================================= */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #f4f7f6; /* Light gray background - easier on the eyes than pure white */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50; /* Dark slate blue for headings */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* The main container */
+.body-content {
+    margin-top: 30px; /* More breathing room */
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: transparent;
+}
+
+/* =========================================
+   2. FORMS & INPUTS (CRITICAL FOR UX)
+   ========================================= */
+
+/* IMPORTANT: We override the default 280px width. 
+   We want inputs to fill the Bootstrap grid columns (col-md-4, etc.) 
+   This makes the form look modern and responsive.
+*/
+input,
+select,
+textarea {
+    max-width: 100% !important; /* Forces input to fill the container */
+    width: 100%;
+}
+
+/* Styling the input boxes */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px; /* Larger click area */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    /* When user clicks a box, it glows blue */
+    .form-control:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+/* Labels */
+.control-label, .form-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Read-only inputs (like your Auto-Calc total) */
+input[readonly] {
+    background-color: #e9ecef !important;
+    cursor: not-allowed;
+    color: #495057;
+    font-weight: bold;
+}
+
+/* =========================================
+   3. CARDS & CONTAINERS (Design Polish)
+   ========================================= */
+.card {
+    border: none; /* Remove default harsh border */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.card-header {
+    background-color: #0d6efd; /* Bootstrap Primary Blue */
+    color: white;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    padding: 15px;
+}
+
+    .card-header h2, .card-header h3 {
+        color: white; /* Ensure headers in cards are white */
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+/* =========================================
+   4. TABLES (For Approval/HR Views)
+   ========================================= */
+.table {
+    margin-bottom: 0;
+    background-color: white;
+}
+
+    .table thead th {
+        border-top: none;
+        background-color: #343a40; /* Dark header */
+        color: white;
+        font-weight: 500;
+    }
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on mouseover */
+}
+
+/* Specific Status Rows */
+.table-warning {
+    background-color: #fff3cd !important; /* Yellow for Flagged */
+}
+
+/* =========================================
+   5. BUTTONS & LINKS
+   ========================================= */
+.btn {
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+    }
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+/* =========================================
+   6. FOOTER & MISC
+   ========================================= */
+footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #777;
+    text-align: center;
+}
+
+/* Validation Errors */
+.text-danger {
+    font-size: 0.9rem;
+    font-weight: 500;
+}

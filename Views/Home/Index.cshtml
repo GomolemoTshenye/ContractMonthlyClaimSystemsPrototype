@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-primary">Contract Monthly Claim System</h1>
+            <p class="col-md-8 fs-4 text-muted">
+                Welcome to the CMCS Digital Portal. This platform streamlines the submission, approval, and payment processing of monthly contract claims for academic staff.
+            </p>
+            @if (!Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Login to Start", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg px-4" })
+            }
+            else
+            {
+                <button class="btn btn-success btn-lg px-4" disabled>Welcome back, @User.Identity.Name</button>
+            }
+        </div>
+    </div>
+
+    <div class="row align-items-stretch">
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="h5 mb-0">For Lecturers</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Submit your monthly hours, upload supporting documents, and track the status of your claims in real-time.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    @Html.ActionLink("Submit New Claim »", "Index", "ClaimSubmission", null, new { @class = "btn btn-outline-primary w-100" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="h5 mb-0">For Coordinators</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Review pending claims, verify hours worked against policy, and approve or reject submissions efficiently.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    @Html.ActionLink("Review Claims »", "Index", "Approval", null, new { @class = "btn btn-outline-primary w-100" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="h5 mb-0">For HR / Admin</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Generate payment invoices, manage lecturer data, and oversee the final settlement of approved claims.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    @Html.ActionLink("Manage Invoices »", "Index", "HR", null, new { @class = "btn btn-outline-primary w-100" })
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
